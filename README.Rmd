@@ -1,15 +1,26 @@
+---
+output: github_document
+---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
 # DnDalignment
 
-The goal of DnDalignment is to easily build D&D alignment charts using
-the `magick` R package.
+
+The goal of DnDalignment is to easily build D&D alignment charts using the `magick` R package.
 
 ## Installation
 
-You can install the development version from
-[GitHub](https://github.com/) with:
+You can install the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
@@ -20,7 +31,7 @@ devtools::install_github("williamorim/DnDalignment")
 
 This is a basic example which shows you how to build a chart:
 
-``` r
+```{r example, out.width="50%", fig.align='center'}
 library(DnDalignment)
 
 create_alignment(
@@ -34,6 +45,5 @@ create_alignment(
   lawful_neutral = "https://uploads.jovemnerd.com.br/wp-content/uploads/2021/01/the-office-dwight-gerenta.jpg",
   true_neutral = "https://pbs.twimg.com/media/EXlUzHzXQAEgIZt.png"
 )
-```
 
-<img src="man/figures/README-example-1.png" width="50%" style="display: block; margin: auto;" />
+```
