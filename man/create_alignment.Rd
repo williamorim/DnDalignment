@@ -5,15 +5,16 @@
 \title{Create a D&D alignment meme}
 \usage{
 create_alignment(
-  lawful_good,
-  lawful_neutral,
-  lawful_evil,
-  neutral_good,
-  true_neutral,
-  neutral_evil,
-  chaotic_good,
-  chaotic_neutral,
-  chaotic_evil
+  lawful_good = NULL,
+  lawful_neutral = NULL,
+  lawful_evil = NULL,
+  neutral_good = NULL,
+  true_neutral = NULL,
+  neutral_evil = NULL,
+  chaotic_good = NULL,
+  chaotic_neutral = NULL,
+  chaotic_evil = NULL,
+  placeholder = NULL
 )
 }
 \arguments{
@@ -34,6 +35,9 @@ create_alignment(
 \item{chaotic_neutral}{string with the image path}
 
 \item{chaotic_evil}{string with the image path}
+
+\item{placeholder}{string with the imagem path to a placeholder image
+(not used alignment)}
 }
 \value{
 an image

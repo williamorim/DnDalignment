@@ -9,14 +9,19 @@
 #' @param chaotic_good string with the image path
 #' @param chaotic_neutral string with the image path
 #' @param chaotic_evil string with the image path
+#' @param placeholder string with the imagem path to a placeholder image
+#' (not used alignment)
 #'
 #' @return an image
 #' @export
 #'
 #' @examples
-create_alignment <- function(lawful_good, lawful_neutral, lawful_evil,
-                             neutral_good, true_neutral, neutral_evil,
-                             chaotic_good, chaotic_neutral, chaotic_evil) {
+create_alignment <- function(lawful_good = NULL, lawful_neutral = NULL,
+                             lawful_evil = NULL,
+                             neutral_good = NULL, true_neutral = NULL,
+                             neutral_evil = NULL,
+                             chaotic_good = NULL, chaotic_neutral = NULL,
+                             chaotic_evil = NULL, placeholder = NULL) {
 
   template_path <- system.file(
     "template.jpg",
@@ -25,15 +30,15 @@ create_alignment <- function(lawful_good, lawful_neutral, lawful_evil,
 
   template <- magick::image_read(template_path)
 
-  lawful_good <- magick::image_read(lawful_good)
-  lawful_neutral <- magick::image_read(lawful_neutral)
-  lawful_evil <- magick::image_read(lawful_evil)
-  neutral_good <- magick::image_read(neutral_good)
-  true_neutral <- magick::image_read(true_neutral)
-  neutral_evil <- magick::image_read(neutral_evil)
-  chaotic_good <- magick::image_read(chaotic_good)
-  chaotic_neutral <- magick::image_read(chaotic_neutral)
-  chaotic_evil <- magick::image_read(chaotic_evil)
+  lawful_good <- ler_imagem(lawful_good, placeholder)
+  lawful_neutral <- ler_imagem(lawful_neutral, placeholder)
+  lawful_evil <- ler_imagem(lawful_evil, placeholder)
+  neutral_good <- ler_imagem(neutral_good, placeholder)
+  true_neutral <- ler_imagem(true_neutral, placeholder)
+  neutral_evil <- ler_imagem(neutral_evil, placeholder)
+  chaotic_good <- ler_imagem(chaotic_good, placeholder)
+  chaotic_neutral <- ler_imagem(chaotic_neutral, placeholder)
+  chaotic_evil <- ler_imagem(chaotic_evil, placeholder)
 
   template %>%
     magick::image_composite(
@@ -73,5 +78,22 @@ create_alignment <- function(lawful_good, lawful_neutral, lawful_evil,
       magick::image_scale(chaotic_evil, "425x263!"),
       offset = "+1039+822"
     )
+}
+
+#'
+ler_imagem <- function(path, placeholder) {
+  imagem_preta <- system.file(
+    "black.png",
+    package = "DnDalignment"
+  )
+  if (is.null(path)) {
+    if(is.null(placeholder)) {
+      magick::image_read(imagem_preta)
+    } else {
+      magick::image_read(placeholder)
+    }
+  } else {
+    magick::image_read(path)
+  }
 }
 

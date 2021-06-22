@@ -1,11 +1,8 @@
 Package: DnDalignment
 Title: Create DnDalignment images
 Version: 1.0.0
-Authors@R: 
-    person(given = "William",
-           family = "Amorim",
-           role = c("aut", "cre"),
-           email = "thewilliam89@@gmail.com")
+Authors@R: c(
+  person("William", "Amorim", role = c("aut", "cre"), email = "wamorim@curso-r.com"))
 Description: Creates DnDalignment images using the magick framework.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -13,4 +10,5 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Imports: 
-    magick
+    magick,
+    magrittr
